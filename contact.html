@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" class="font-sans text-base">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description"
+        content="NumScroller - jQuery plugin for number increment rolling animation when it becomes visibile while scrolling">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Contact Us - Charry</title>
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="dist/css/styles.css">
+
+    <link href="lib/prism.css" rel="stylesheet" />
+
+
+    <!--Alipne JS Plugin-->
+    <script src="./node_modules/alpinejs/dist/alpine.js" defer></script>
+
+
+</head>
+
+<body>
+
+    <div id="root" class="max-w-full overflow-hidden">
+
+        <header class="bg-black px-5 flex flex-nowrap items-center" x-data="{ isOpen: false }"
+            @keydown.escape="isOpen = false">
+            <div class="mr-auto  w-28 flex">
+                <a class="flex items-center py-2 lg:py-1" href="javascript:void(0);"><img
+                        src="dist/images/logo_tagline_shadow_transparent_bg.png" alt="" width="2400" height="747"
+                        title="logo_tagline_shadow_transparent_bg"></a>
+            </div>
+
+            <button class="md:hidden w-10 h-10 cursor-pointer" @click="isOpen = !isOpen"
+                :class="{ 'transition transform-180': isOpen }">
+                <span class="h-0.5 w-6 bg-gray-600 block mx-auto"></span>
+                <span class="h-0.5 w-6 bg-gray-600 block mx-auto my-1"></span>
+                <span class="h-0.5 w-6 bg-gray-600 block mx-auto"></span>
+            </button>
+
+
+            <div class="inset-0 ml-auto bg-black bg-opacity-50  md:w-auto fixed md:hidden z-10"
+                @click="isOpen = !isOpen" :class="{ 'hidden': !isOpen }"></div>
+            <nav class=" ml-auto  md:relative bg-black  md:bg-transparent  md:block h-full md:h-auto w-60 md:w-auto fixed top-0 right-0 z-20"
+                :class="{ 'block  ': isOpen, 'hidden': !isOpen }" @click.away="isOpen = false" x-show.transition="true">
+
+                <button class="md:hidden w-10 h-10  cursor-pointer  my-5 mx-5" @click="isOpen = !isOpen"
+                    :class="{ 'transition transform-180': isOpen }">
+                    <span class="h-0.5 w-6 bg-gray-600 block mx-auto transform rotate-45"></span>
+                    <span class="h-0.5 w-6 bg-gray-600 block mx-auto my-1 hidden"></span>
+                    <span class="h-0.5 w-6 bg-gray-600 block mx-auto transform -rotate-45"></span>
+                </button>
+
+
+
+                <ul
+                    class="flex flex-col md:flex-row sm:flex-nowrap md:items-center items-start p-3 lg:space-x-5 md:space-x-2 space-y-2 md:space-y-0 text-sm uppercase font-bold md:normal-case md:font-normal">
+                    <li class="flex  md:border-0 border-b border-gray-700 md:w-auto w-full"><a
+                            class="inline-flex px-3 py-4 2xl:py-6 xl:py-4 lg:py-3 items-center justify-center text-white hover:text-gray-300"
+                            href="javascript:void(0);">Home</a></li>
+                    <li class="flex md:border-0 border-b border-gray-700 md:w-auto w-full" id="some"><a
+                            class="inline-flex px-3 py-4 2xl:py-6 lg:py-3 items-center justify-center text-white hover:text-gray-300"
+                            href="javascript:void(0);" data-anchor="#vision">Our Vision</a></li>
+                    <li class="flex md:border-0 border-b border-gray-700 md:w-auto w-full" id="some1"><a
+                            class="inline-flex px-3 py-4 2xl:py-6 lg:py-3 items-center justify-center text-white hover:text-gray-300"
+                            href="javascript:void(0);" data-anchor="#features">Features</a></li>
+                    <li class="flex md:border-0 border-b border-gray-700 md:w-auto w-full" id="some2"><a
+                            class="inline-flex px-3 py-4 2xl:py-6 lg:py-3 items-center justify-center text-white hover:text-gray-300"
+                            href="javascript:void(0);" data-anchor="#partners">Partners</a></li>
+                    <li class="flex md:border-0 border-b border-gray-700 md:w-auto w-full"><a
+                            class="inline-flex px-3 py-4 2xl:py-6 lg:py-3 items-center justify-center text-white hover:text-gray-300"
+                            href="javascript:void(0);">Lightpaper</a></li>
+                    <li class="flex md:border-0 border-b border-gray-700 md:w-auto w-full"><a
+                            class="inline-flex px-3 py-4 2xl:py-6 lg:py-3 items-center justify-center text-white hover:text-gray-300"
+                            href="contactus.html">Contact Us</a></li>
+                </ul>
+
+                <div class="absolute hidden 2xl:block w-16 h-3 flex items-center justifty-center bottom-2"><span
+                        class="w-1 h-1 rounded-full bg-white block mx-auto"></span></div>
+
+            </nav><!-- apzo-navigation -->
+
+        </header>
+
+        <!-- Component Code -->
+
+        <form class="pt-24">
+            <div class="w-full md:w-1/2 lg:pl-80 px-5 lg:pr-0">
+                <div class="text-justify">
+                    <h1 class="text-3xl font-bold pb-5 lg:pb-0">Leave us your info</h1>
+                    <p class="lg:pt-10 text-gray-500 text-base pb-6 lg:pb-0">Leave your message and our team will get back to you asap.</p>
+                </div>
+
+                <div class="flex flex-col divide-y divide-y-reverse divide-rose-400 lg:pt-14">
+                    <div>
+                    </div>
+                    <div>
+                        <input class="text-xl appearance-none  w-full  text-gray-400 py-4 mb-3" id="grid-first-name"
+                            type="text" placeholder="Full Name*">
+                    </div>
+                    <div>
+                        <input class="text-xl appearance-none  w-full  text-gray-400 py-4 mb-3" id="grid-first-name"
+                            type="text" placeholder="Email*">
+                    </div>
+                    <div>
+                        <input class="text-xl appearance-none  w-full  text-gray-400 py-4 mb-3" id="grid-first-name"
+                            type="text" placeholder="Phone Number ">
+                    </div>
+                    <div>
+                        <input class="text-xl appearance-none  w-full  text-gray-400 py-4 mb-3" id="grid-first-name"
+                            type="text" placeholder="Country">
+                    </div>
+                    <div>
+                        <input class="text-xl appearance-none  w-full  text-gray-400 py-4 mb-12" id="grid-first-name"
+                            type="text" placeholder="Message*">
+                    </div>
+                </div>
+                <button
+                    class=" lg:h-10 lg:px-10 my-8 text-gray-100 transition-colors duration-150 bg-blueviolet-400 rounded-full focus:shadow-outline hover:bg-gray-800">Submit
+                    Now</button>
+            </div>
+        </form>
+
+
+        <footer class="bg-black px-5">
+            <p class="text-white text-sm sm:text-base py-3 xl:py-10">Copyright ©2021 Berrynomics Ltd, Malta. All Rights
+                Reserved.</p>
+
+            <span class='numscroller' data-min='1' data-max='1000' data-delay='5' data-increment='10'>1000</span>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

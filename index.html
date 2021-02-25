@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en" class="font-sans text-base">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description"
+		content="NumScroller - jQuery plugin for number increment rolling animation when it becomes visibile while scrolling">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Charry</title>
+	<!--Google Fonts-->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+		rel="stylesheet">
+
+	<!-- Tailwind CSS -->
+	<link rel="stylesheet" href="dist/css/styles.css">
+
+	<link href="lib/prism.css" rel="stylesheet" />
+
+
+	<!--Alipne JS Plugin-->
+	<script src="./node_modules/alpinejs/dist/alpine.js" defer></script>
+
+
+</head>
+
+<body>
+
+	<div id="root" class="max-w-full overflow-hidden">
+
+		<header class="bg-black px-5 flex flex-nowrap items-center" x-data="{ isOpen: false }"
+			@keydown.escape="isOpen = false">
+			<div class="mr-auto  w-28 flex">
+				<a class="flex items-center py-2 lg:py-1" href="javascript:void(0);"><img
+						src="dist/images/logo_tagline_shadow_transparent_bg.png" alt="" width="2400" height="747"
+						title="logo_tagline_shadow_transparent_bg"></a>
+			</div>
+
+			<button class="md:hidden w-10 h-10 cursor-pointer" @click="isOpen = !isOpen"
+				:class="{ 'transition transform-180': isOpen }">
+				<span class="h-0.5 w-6 bg-gray-600 block mx-auto"></span>
+				<span class="h-0.5 w-6 bg-gray-600 block mx-auto my-1"></span>
+				<span class="h-0.5 w-6 bg-gray-600 block mx-auto"></span>
+			</button>
+
+
+			<div class="inset-0 ml-auto bg-black bg-opacity-50  md:w-auto fixed md:hidden z-10"
+				@click="isOpen = !isOpen" :class="{ 'hidden': !isOpen }"></div>
+			<nav class=" ml-auto  md:relative bg-black  md:bg-transparent  md:block h-full md:h-auto w-60 md:w-auto fixed top-0 right-0 z-20"
+				:class="{ 'block  ': isOpen, 'hidden': !isOpen }" @click.away="isOpen = false" x-show.transition="true">
+
+				<button class="md:hidden w-10 h-10  cursor-pointer  my-5 mx-5" @click="isOpen = !isOpen"
+					:class="{ 'transition transform-180': isOpen }">
+					<span class="h-0.5 w-6 bg-gray-600 block mx-auto transform rotate-45"></span>
+					<span class="h-0.5 w-6 bg-gray-600 block mx-auto my-1 hidden"></span>
+					<span class="h-0.5 w-6 bg-gray-600 block mx-auto transform -rotate-45"></span>
+				</button>
+
+
+
+				<ul
+					class="flex flex-col md:flex-row sm:flex-nowrap md:items-center items-start p-3 lg:space-x-5 md:space-x-2 space-y-2 md:space-y-0 text-sm uppercase font-bold md:normal-case md:font-normal">
+					<li class="flex  md:border-0 border-b border-gray-700 md:w-auto w-full"><a
+							class="inline-flex px-3 py-4 2xl:py-6 xl:py-4 lg:py-3 items-center justify-center text-white hover:text-gray-300"
+							href="javascript:void(0);">Home</a></li>
+					<li class="flex md:border-0 border-b border-gray-700 md:w-auto w-full" id="some"><a
+							class="inline-flex px-3 py-4 2xl:py-6 lg:py-3 items-center justify-center text-white hover:text-gray-300"
+							href="javascript:void(0);" data-anchor="#vision">Our Vision</a></li>
+					<li class="flex md:border-0 border-b border-gray-700 md:w-auto w-full" id="some1"><a
+							class="inline-flex px-3 py-4 2xl:py-6 lg:py-3 items-center justify-center text-white hover:text-gray-300"
+							href="javascript:void(0);" data-anchor="#features">Features</a></li>
+					<li class="flex md:border-0 border-b border-gray-700 md:w-auto w-full" id="some2"><a
+							class="inline-flex px-3 py-4 2xl:py-6 lg:py-3 items-center justify-center text-white hover:text-gray-300"
+							href="javascript:void(0);" data-anchor="#partners">Partners</a></li>
+					<li class="flex md:border-0 border-b border-gray-700 md:w-auto w-full"><a
+							class="inline-flex px-3 py-4 2xl:py-6 lg:py-3 items-center justify-center text-white hover:text-gray-300"
+							href="javascript:void(0);">Lightpaper</a></li>
+					<li class="flex md:border-0 border-b border-gray-700 md:w-auto w-full"><a
+							class="inline-flex px-3 py-4 2xl:py-6 lg:py-3 items-center justify-center text-white hover:text-gray-300"
+							href="contact.html">Contact Us</a></li>
+				</ul>
+
+				<div class="absolute hidden 2xl:block w-16 h-3 flex items-center justifty-center bottom-2"><span
+						class="w-1 h-1 rounded-full bg-white block mx-auto"></span></div>
+
+			</nav><!-- apzo-navigation -->
+
+		</header>
+		<main class="">
+			<section class="bg-gradient-to-b from-blueviolet-500 to-orchid-500  px-5">
+				<div class="max-w-screen-xl mx-auto flex flex-wrap items-center 2xl:py-24 xl:py-16 lg:py-12 py-10">
+					<div class="flex flex-wrap justify-center md:w-1/2 w-full ">
+						<img src="dist/images/hero.gif" alt="">
+					</div>
+					<div
+						class="flex flex-wrap sm:justify-start justify-center text-center sm:text-left  items-center sm:items-start md:w-1/2 w-full">
+						<h1
+							class="text-white xl:text-6xl lg:text-4xl  text-3xl font-bold leading-tight uppercase mb-2 sm:mb-0">
+							The Charry Network</h1>
+						<p class="text-white text-base lg:text-xl xl:text-2xl text-left mt-2">An Open Network with
+							Traction from Day 1</p>
+						<div class="text-left mt-5 xl:mt-10">
+							<a href="javascript:void(0);"
+								class="shadow-2xl rounded-full bg-gradient-to-t from-orchid-500 via-transparent to-blueviolet-600 px-10 py-3 font-bold text-white inline-block hover:to-orchid-500 hover:from-blueviolet-600 transition uppercase text-sm lg:text-base">Download
+								Litepaper</a>
+						</div>
+					</div>
+
+				</div>
+			</section>
+
+			<section class=" text-center 2xl:py-24 xl:py-16 lg:py-12 py-10 px-5">
+				<h2 class="text-gray-700 2xl:text-5xl lg:text-4xl  text-3xl font-black leading-tight uppercase">Why
+					should I chose Charry?</h2>
+				<p class="italic pt-2 text-lg text-gray-500">Rapid Adoption Across Ecosystems is Our No 1. Goal</p>
+
+				<div
+					class="grid lg:gap-8 md:gap-3 gap-12 md:grid-cols-4 grid-cols-1 sm:grid-cols-2 sm:grid-row-2 grid-row-4 md:grid-row-1 pt-7 lg:pt-16 xl:pt-28">
+					<div class="text-center lg:space-y-4 space-y-2">
+						<div class='xl:text-4xl text-5xl font-black text-blueviolet-500 numscroller numscroller-big-bottom'
+							data-slno='1' data-min='0' data-max='1000' data-delay='5' data-increment="13">+</div>
+						<p class="uppercase lg:text-lg text-sm font-medium">Merchants onboard</p>
+					</div>
+					<div class="text-center lg:space-y-4 space-y-2">
+						<div class='xl:text-4xl text-5xl font-black text-blueviolet-500 flex justify-center'>
+							<div class="numscroller numscroller-big-bottom" data-slno='1' data-min='0' data-max='10'
+								data-delay='5' data-increment="13">
+							</div><span>+</span>
+						</div>
+						<p class="uppercase lg:text-lg text-sm font-medium">Countries Supported</p>
+					</div>
+					<div class="text-center lg:space-y-4 space-y-2">
+						<div class='xl:text-4xl text-5xl font-black text-blueviolet-500 flex justify-center'>
+							<div class="numscroller numscroller-big-bottom" data-slno='1' data-min='0' data-max='10'
+								data-delay='5' data-increment="13">
+							</div><span>+</span>
+						</div>
+						<p class="uppercase lg:text-lg text-sm font-medium">Currencies Supported</p>
+					</div>
+					<div class="text-center lg:space-y-4 space-y-2">
+						<div class='xl:text-4xl text-5xl font-black text-blueviolet-500 flex justify-center'>
+							<div class="numscroller numscroller-big-bottom" data-slno='1' data-min='0' data-max='25'
+								data-delay='5' data-increment="13">
+							</div><span>M+</span>
+						</div>
+						<p class="uppercase lg:text-lg text-sm font-medium">Customers Served</p>
+					</div>
+				</div>
+
+			</section>
+			<section class="bg-vision bg-no-repeat 	bg-cover bg-fixed">
+				<div class="" id="myDiv">
+					<div class="max-w-screen-xl mx-auto 2xl:py-24 xl:py-16 lg:py-12 py-10">
+						<div class="xl:max-w-3xl ml-auto text-white lg:px-20 xl:px-0 px-5">
+							<h2 class="text-white lg:text-4xl text-3xl font-black leading-tight uppercase">The Charry
+								Vision</h2>
+							<div class="space-y-10 mt-10">
+								<dl>
+									<dt class="flex uppercase lg:text-2xl text-xl font-bold items-center"><span
+											class="w-20 inline-block mr-5"><img
+												src="dist/images/broad-acceptance-icon@2x.png" alt=""></span>BROAD
+										ACCEPTANCE</dt>
+									<dd class="mt-5 text-xl leading-relaxed">Reaching across vastly different
+										ecosystems, the Charry token acts as payment across a great variety of stores
+										for broad audience of end users. Charry is to become a visible, well-known brand
+										wherever payments are to be made.</dd>
+								</dl>
+								<dl>
+									<dt class="flex uppercase lg:text-2xl text-xl font-bold items-center"><span
+											class="w-20 inline-block mr-5"><img src="dist/images/customer@2x.png"
+												alt=""></span>CUSTOMER CENTRICITY</dt>
+									<dd class="mt-5 text-xl leading-relaxed">We believe in listening carefully to our
+										end-users, businesses and consumers alike, and follow their lead to creating
+										something new, yet familiar and easy-to-use.</dd>
+								</dl>
+								<dl>
+									<dt class="flex  lg:text-2xl text-xl font-bold items-center"><span
+											class="w-20 inline-block mr-5"><img src="dist/images/solidarity@2x.png"
+												alt=""></span>Secure and Reliable</dt>
+									<dd class="mt-5 text-xl leading-relaxed">Charry wants to be part of a better world.
+										Its basic functions will include charity activities users can support society as
+										a whole.</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="text-center 2xl:py-24 xl:py-16 lg:py-12 py-10 px-5">
+				<h2 class="text-gray-800 2xl:text-5xl lg:text-4xl text-3xl font-black leading-tight uppercase">Subscribe
+					to newsletter</h2>
+				<p class="italic pt-2 text-base text-gray-500 pt-3">Be up to date with our latest developments by
+					subscribing to our newsletter.</p>
+				<div class="mt-10 max-w-xl mx-auto">
+					<form class="flex flex-col sm:flex-row md:flex-nowrap">
+						<input type="email"
+							class="border border-gray-400 sm:border-r-0 py-3 lg:py-5 px-8 w-96 max-w-full focus:outline-none focus:border-orchid-500 text-orchid-500"
+							placeholder="Your Email Address" required>
+						<button
+							class="bg-orchid-500 text-white py-3 px-8 mt-3 sm:mt-0 uppercase font-bold hover:bg-orchid-600">Subscribe</button>
+					</form>
+				</div>
+			</section>
+
+			<section class="text-center sm:text-left">
+				<div
+					class="flex flex-wrap items-center 2xl:py-24 xl:py-16 lg:py-12 py-10 px-5 lg:px-10 xl:pl-10 xl:pr-28">
+					<div class="lg:w-1/2 sm:w-1/3 w-full">
+						<img src="dist/images/home_cards.png" alt="">
+					</div>
+					<div class="lg:w-1/2 sm:w-2/3 w-full">
+						<h2 class="text-gray-800 lg:text-3xl text-2xl font-black leading-tight uppercase">Purchase
+							Crypto easily with a card</h2>
+						<p class="mt-5 text-xl leading-relaxed text-gray-500">Easily purchase more than 40
+							cryptocurrencies on the
+							Charry mobile app and website with your credit or debit card with highest level of security.
+						</p>
+						<div class="sm:text-left mt-10">
+							<a href="javascript:void(0);"
+								class="shadow-2xl rounded-full bg-gradient-to-t to-orchid-500  from-blueviolet-600 px-10 py-3 lg:py-5 font-light text-white hover:from-orchid-500 hover:to-blueviolet-600 transition uppercase inline-flex space-x-3">
+
+								<span class="w-5"><svg xmlns="http://www.w3.org/2000/svg"
+										xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px"
+										y="0px" fill="currentColor" class="w-5 h-6" viewBox="0 0 224.993 224.993"
+										style="enable-background:new 0 0 224.993 224.993;" xml:space="preserve">
+										<path
+											d="M201.539,91.023L48.002,3.26C44.271,1.127,40.026,0,35.728,0c-4.354,0-8.646,1.155-12.412,3.34  c-7.6,4.409-12.321,12.606-12.321,21.393V200.26c0,8.786,4.721,16.983,12.319,21.392c3.766,2.187,8.059,3.342,12.413,3.342  c4.296,0,8.541-1.128,12.274-3.261l153.535-87.764c7.686-4.394,12.46-12.621,12.46-21.473S209.224,95.417,201.539,91.023z   M135.006,70.271l-21.081,29.364L63.5,29.397L135.006,70.271z M34.76,209.908c-1.371-0.133-2.716-0.533-3.917-1.23  c-2.99-1.735-4.848-4.961-4.848-8.418V24.732c0-3.457,1.858-6.683,4.849-8.418c1.197-0.695,2.531-1.109,3.902-1.25l69.946,97.432  L34.76,209.908z M63.5,195.596l50.425-70.239l21.081,29.364L63.5,195.596z M194.094,120.945l-45.996,26.292l-24.941-34.741  l24.941-34.741l45.996,26.292c3.024,1.729,4.903,4.966,4.903,8.449S197.119,119.217,194.094,120.945z" />
+									</svg></span>
+								<span class="w-6"><svg fill="currentColor" class="w-6 h-6"
+										xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+										version="1.1" id="Capa_1" x="0px" y="0px" width="611.996px" height="611.996px"
+										viewBox="0 0 611.996 611.996" style="enable-background:new 0 0 611.996 611.996;"
+										xml:space="preserve">
+										<g id="group-6svg">
+											<path id="path-1_37_"
+												d="M399.949,611.996c-17.435,0-33.481-4.912-47.673-14.59l-0.864-0.621     c-0.359-0.272-12.115-8.999-32.103-8.999c-12.513,0-25.608,3.456-38.946,10.271c-4.048,2.476-22.725,12.988-46.575,12.988     c-19.561,0-37.394-6.775-53.003-20.143C156.07,569.74,74.791,490.421,66.734,358.285c-3.669-60.167,15.939-117.76,53.788-158.007     c34.335-36.519,79.833-52.896,123.303-44.198c0.99,0.146,33.296,5.562,64.894,23.55c16.765-8.397,58.399-26.608,103.733-26.608     c54.157,0,96.258,26.268,121.739,75.95l5.776,11.27l-10.349,7.3c-0.543,0.378-56.166,40.392-55.963,88.784     c0.107,26.384,17.23,51.672,50.915,75.164c10.553,7.348,17.823,18.773,20.065,31.461     c10.843,39.616-63.942,136.524-108.751,161.666l-1.098,0.563C433.255,605.881,419.237,611.996,399.949,611.996z M368.973,573.535     c9.202,6.184,19.618,9.31,30.976,9.31c11.406,0,20.279-3.203,22.405-4.038c46.178-26.481,98.83-111.557,94.268-127.972     l-0.572-2.35c-0.825-5.29-3.786-10.057-8.125-13.085c-41.975-29.268-63.302-62.604-63.39-99.093     c-0.126-48.916,38.694-88.017,57.904-104.374c-20.54-33.024-50.76-49.76-89.986-49.76c-49.926,0-96.462,26.53-96.929,26.802     l-7.659,4.426l-7.465-4.766c-28.704-18.347-61.438-23.841-61.768-23.89c-6.397-1.272-12.377-1.864-18.318-1.864     c-28.024,0-55.934,13.27-78.581,37.363c-31.897,33.917-49.06,84.852-45.935,136.263C103.156,477.2,177.203,549.48,199.725,568.76     c10.183,8.717,21.647,13.144,34.063,13.144c17.58,0,31.306-8.649,31.432-8.727l1.282-0.758     c17.677-9.144,35.441-13.774,52.808-13.774C347.539,558.645,365.274,570.75,368.973,573.535z" />
+											<path id="path-2_25_"
+												d="M306.312,156.042c-3.203,0-6.358-1.058-8.931-3.058c-3.446-2.679-5.514-6.766-5.621-11.125     c-0.116-4.067-1.301-100.199,118.547-141.077c4.184-1.427,8.775-0.883,12.503,1.476c3.718,2.359,6.174,6.281,6.669,10.668     c0.136,1.126,11.231,112.799-119.925,142.747C308.477,155.916,307.389,156.042,306.312,156.042z M399.667,36.34     c-53.061,24.492-70.417,62.118-76.076,85.037C380.941,101.186,395.988,60.832,399.667,36.34z" />
+										</g>
+									</svg></span>
+								<span>Download the App</span></a>
+						</div>
+					</div>
+				</div>
+
+				<div
+					class="flex flex-wrap flex-row-reverse items-center 2xl:py-24 xl:py-16 lg:py-12 py-10 bg-gradient-to-b from-blueviolet-500 to-orchid-500  px-5 lg:px-10 xl:pl-10 xl:pr-28">
+					<div class="lg:w-1/2 sm:w-1/3 w-full">
+						<img src="dist/images/home_security.png" alt="">
+					</div>
+					<div class="lg:w-1/2 sm:w-2/3 w-full">
+						<h2 class="text-white lg:text-3xl text-2xl font-black leading-tight uppercase">Charry Wallet:
+							One for All, All for One</h2>
+						<p class="mt-5 text-white  text-xl leading-relaxed">Easily purchase more than 40
+							cryptocurrencies on the Charry mobile app and website with your credit or debit card with
+							highest level of security.</p>
+						<div class="sm:text-left mt-10">
+							<a href="javascript:void(0);"
+								class="shadow-2xl rounded-full   bg-blueviolet-400  px-10 py-3 lg:py-5 font-light text-white  hover:bg-blueviolet-600 bg-opacity-20 transition uppercase inline-flex space-x-3">
+
+								<span class="w-5"><svg xmlns="http://www.w3.org/2000/svg"
+										xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px"
+										y="0px" fill="currentColor" class="w-5 h-6" viewBox="0 0 224.993 224.993"
+										style="enable-background:new 0 0 224.993 224.993;" xml:space="preserve">
+										<path
+											d="M201.539,91.023L48.002,3.26C44.271,1.127,40.026,0,35.728,0c-4.354,0-8.646,1.155-12.412,3.34  c-7.6,4.409-12.321,12.606-12.321,21.393V200.26c0,8.786,4.721,16.983,12.319,21.392c3.766,2.187,8.059,3.342,12.413,3.342  c4.296,0,8.541-1.128,12.274-3.261l153.535-87.764c7.686-4.394,12.46-12.621,12.46-21.473S209.224,95.417,201.539,91.023z   M135.006,70.271l-21.081,29.364L63.5,29.397L135.006,70.271z M34.76,209.908c-1.371-0.133-2.716-0.533-3.917-1.23  c-2.99-1.735-4.848-4.961-4.848-8.418V24.732c0-3.457,1.858-6.683,4.849-8.418c1.197-0.695,2.531-1.109,3.902-1.25l69.946,97.432  L34.76,209.908z M63.5,195.596l50.425-70.239l21.081,29.364L63.5,195.596z M194.094,120.945l-45.996,26.292l-24.941-34.741  l24.941-34.741l45.996,26.292c3.024,1.729,4.903,4.966,4.903,8.449S197.119,119.217,194.094,120.945z" />
+									</svg></span>
+								<span class="w-6"><svg fill="currentColor" class="w-6 h-6"
+										xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+										version="1.1" id="Capa_1" x="0px" y="0px" width="611.996px" height="611.996px"
+										viewBox="0 0 611.996 611.996" style="enable-background:new 0 0 611.996 611.996;"
+										xml:space="preserve">
+										<g id="group-6svg">
+											<path id="path-1_37_"
+												d="M399.949,611.996c-17.435,0-33.481-4.912-47.673-14.59l-0.864-0.621     c-0.359-0.272-12.115-8.999-32.103-8.999c-12.513,0-25.608,3.456-38.946,10.271c-4.048,2.476-22.725,12.988-46.575,12.988     c-19.561,0-37.394-6.775-53.003-20.143C156.07,569.74,74.791,490.421,66.734,358.285c-3.669-60.167,15.939-117.76,53.788-158.007     c34.335-36.519,79.833-52.896,123.303-44.198c0.99,0.146,33.296,5.562,64.894,23.55c16.765-8.397,58.399-26.608,103.733-26.608     c54.157,0,96.258,26.268,121.739,75.95l5.776,11.27l-10.349,7.3c-0.543,0.378-56.166,40.392-55.963,88.784     c0.107,26.384,17.23,51.672,50.915,75.164c10.553,7.348,17.823,18.773,20.065,31.461     c10.843,39.616-63.942,136.524-108.751,161.666l-1.098,0.563C433.255,605.881,419.237,611.996,399.949,611.996z M368.973,573.535     c9.202,6.184,19.618,9.31,30.976,9.31c11.406,0,20.279-3.203,22.405-4.038c46.178-26.481,98.83-111.557,94.268-127.972     l-0.572-2.35c-0.825-5.29-3.786-10.057-8.125-13.085c-41.975-29.268-63.302-62.604-63.39-99.093     c-0.126-48.916,38.694-88.017,57.904-104.374c-20.54-33.024-50.76-49.76-89.986-49.76c-49.926,0-96.462,26.53-96.929,26.802     l-7.659,4.426l-7.465-4.766c-28.704-18.347-61.438-23.841-61.768-23.89c-6.397-1.272-12.377-1.864-18.318-1.864     c-28.024,0-55.934,13.27-78.581,37.363c-31.897,33.917-49.06,84.852-45.935,136.263C103.156,477.2,177.203,549.48,199.725,568.76     c10.183,8.717,21.647,13.144,34.063,13.144c17.58,0,31.306-8.649,31.432-8.727l1.282-0.758     c17.677-9.144,35.441-13.774,52.808-13.774C347.539,558.645,365.274,570.75,368.973,573.535z" />
+											<path id="path-2_25_"
+												d="M306.312,156.042c-3.203,0-6.358-1.058-8.931-3.058c-3.446-2.679-5.514-6.766-5.621-11.125     c-0.116-4.067-1.301-100.199,118.547-141.077c4.184-1.427,8.775-0.883,12.503,1.476c3.718,2.359,6.174,6.281,6.669,10.668     c0.136,1.126,11.231,112.799-119.925,142.747C308.477,155.916,307.389,156.042,306.312,156.042z M399.667,36.34     c-53.061,24.492-70.417,62.118-76.076,85.037C380.941,101.186,395.988,60.832,399.667,36.34z" />
+										</g>
+									</svg></span>
+								<span>Download the App</span></a>
+						</div>
+					</div>
+				</div>
+
+				<div
+					class="flex flex-wrap items-center 2xl:py-24 xl:py-16 lg:py-12 py-10 px-5 lg:px-10 xl:pl-10 xl:pr-28">
+					<div class="lg:w-1/2 sm:w-1/3 w-full">
+						<img src="dist/images/home_dex.png" alt="">
+					</div>
+					<div class="lg:w-1/2 sm:w-2/3 w-full">
+						<h2 class="text-gray-800 lg:text-3xl text-2xl font-black leading-tight uppercase">Driving Charry
+							Token Engagement With Customer Loyalty</h2>
+						<p class="mt-5 text-xl leading-relaxed text-gray-500">CharryNetwork spoke to merchants, and
+							registered a high demand for cost effective loyalty programs for customer retention.
+							CharryNetwork believes such loyalty programs should in our modern era be interchangeable
+							with each other, a feature made possibly by the Charry token, at minimal cost.<br>
+							Retailers seeking new ways for customer loyalty across ecosystems should select<br>
+							CharryNetwork to provide such solutions as the way forward to a new digital asset class with
+							enormous market potential.
+						</p>
+						<div class="sm:text-left mt-10">
+							<a href="javascript:void(0);"
+								class="shadow-2xl rounded-full bg-gradient-to-t to-orchid-500  from-blueviolet-600 px-10 py-3 lg:py-5 font-light text-white hover:from-orchid-500 hover:to-blueviolet-600 transition uppercase inline-flex space-x-3">
+
+								<span class="w-5"><svg xmlns="http://www.w3.org/2000/svg"
+										xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px"
+										y="0px" fill="currentColor" class="w-5 h-6" viewBox="0 0 224.993 224.993"
+										style="enable-background:new 0 0 224.993 224.993;" xml:space="preserve">
+										<path
+											d="M201.539,91.023L48.002,3.26C44.271,1.127,40.026,0,35.728,0c-4.354,0-8.646,1.155-12.412,3.34  c-7.6,4.409-12.321,12.606-12.321,21.393V200.26c0,8.786,4.721,16.983,12.319,21.392c3.766,2.187,8.059,3.342,12.413,3.342  c4.296,0,8.541-1.128,12.274-3.261l153.535-87.764c7.686-4.394,12.46-12.621,12.46-21.473S209.224,95.417,201.539,91.023z   M135.006,70.271l-21.081,29.364L63.5,29.397L135.006,70.271z M34.76,209.908c-1.371-0.133-2.716-0.533-3.917-1.23  c-2.99-1.735-4.848-4.961-4.848-8.418V24.732c0-3.457,1.858-6.683,4.849-8.418c1.197-0.695,2.531-1.109,3.902-1.25l69.946,97.432  L34.76,209.908z M63.5,195.596l50.425-70.239l21.081,29.364L63.5,195.596z M194.094,120.945l-45.996,26.292l-24.941-34.741  l24.941-34.741l45.996,26.292c3.024,1.729,4.903,4.966,4.903,8.449S197.119,119.217,194.094,120.945z" />
+									</svg></span>
+								<span class="w-6"><svg fill="currentColor" class="w-6 h-6"
+										xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+										version="1.1" id="Capa_1" x="0px" y="0px" width="611.996px" height="611.996px"
+										viewBox="0 0 611.996 611.996" style="enable-background:new 0 0 611.996 611.996;"
+										xml:space="preserve">
+										<g id="group-6svg">
+											<path id="path-1_37_"
+												d="M399.949,611.996c-17.435,0-33.481-4.912-47.673-14.59l-0.864-0.621     c-0.359-0.272-12.115-8.999-32.103-8.999c-12.513,0-25.608,3.456-38.946,10.271c-4.048,2.476-22.725,12.988-46.575,12.988     c-19.561,0-37.394-6.775-53.003-20.143C156.07,569.74,74.791,490.421,66.734,358.285c-3.669-60.167,15.939-117.76,53.788-158.007     c34.335-36.519,79.833-52.896,123.303-44.198c0.99,0.146,33.296,5.562,64.894,23.55c16.765-8.397,58.399-26.608,103.733-26.608     c54.157,0,96.258,26.268,121.739,75.95l5.776,11.27l-10.349,7.3c-0.543,0.378-56.166,40.392-55.963,88.784     c0.107,26.384,17.23,51.672,50.915,75.164c10.553,7.348,17.823,18.773,20.065,31.461     c10.843,39.616-63.942,136.524-108.751,161.666l-1.098,0.563C433.255,605.881,419.237,611.996,399.949,611.996z M368.973,573.535     c9.202,6.184,19.618,9.31,30.976,9.31c11.406,0,20.279-3.203,22.405-4.038c46.178-26.481,98.83-111.557,94.268-127.972     l-0.572-2.35c-0.825-5.29-3.786-10.057-8.125-13.085c-41.975-29.268-63.302-62.604-63.39-99.093     c-0.126-48.916,38.694-88.017,57.904-104.374c-20.54-33.024-50.76-49.76-89.986-49.76c-49.926,0-96.462,26.53-96.929,26.802     l-7.659,4.426l-7.465-4.766c-28.704-18.347-61.438-23.841-61.768-23.89c-6.397-1.272-12.377-1.864-18.318-1.864     c-28.024,0-55.934,13.27-78.581,37.363c-31.897,33.917-49.06,84.852-45.935,136.263C103.156,477.2,177.203,549.48,199.725,568.76     c10.183,8.717,21.647,13.144,34.063,13.144c17.58,0,31.306-8.649,31.432-8.727l1.282-0.758     c17.677-9.144,35.441-13.774,52.808-13.774C347.539,558.645,365.274,570.75,368.973,573.535z" />
+											<path id="path-2_25_"
+												d="M306.312,156.042c-3.203,0-6.358-1.058-8.931-3.058c-3.446-2.679-5.514-6.766-5.621-11.125     c-0.116-4.067-1.301-100.199,118.547-141.077c4.184-1.427,8.775-0.883,12.503,1.476c3.718,2.359,6.174,6.281,6.669,10.668     c0.136,1.126,11.231,112.799-119.925,142.747C308.477,155.916,307.389,156.042,306.312,156.042z M399.667,36.34     c-53.061,24.492-70.417,62.118-76.076,85.037C380.941,101.186,395.988,60.832,399.667,36.34z" />
+										</g>
+									</svg></span>
+								<span>Download the App</span></a>
+						</div>
+					</div>
+				</div>
+
+
+			</section>
+			<section class="text-center 2xl:pb-24 xl:pb-16 lg:pb-12 pb-10 pt-10 lg:pt-0">
+				<div class="" id="myDiv1">
+					<h2 class="text-gray-800 2xl:text-5xl lg:text-4xl text-3xl font-black leading-tight uppercase">
+						Charry
+						Features</h2>
+					<div
+						class="grid lg:gap-8 md:gap-3 gap-12 md:grid-cols-4 grid-cols-1 sm:grid-cols-2 sm:grid-row-2 grid-row-4 md:grid-row-1 pt-7 lg:pt-16 xl:pt-28">
+						<div class="text-center space-y-4">
+							<img src="dist/images/refresh.jpg" alt="" class="mx-auto">
+							<p class="italic text-lg font-medium text-gray-500">Recovery & Safety</p>
+						</div>
+						<div class="text-center space-y-4">
+							<img src="dist/images/padlock.jpg" alt="" class="mx-auto">
+							<p class="italic text-lg font-medium text-gray-500">Security</p>
+						</div>
+						<div class="text-center space-y-4">
+							<img src="dist/images/like.jpg" alt="" class="mx-auto">
+							<p class="italic text-lg font-medium text-gray-500">Trusted Environment</p>
+						</div>
+						<div class="text-center space-y-4">
+							<img src="dist/images/heart.jpg" alt="" class="mx-auto">
+							<p class="italic text-lg font-medium text-gray-500">Charity Services</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="bg-blog bg-no-repeat bg-cover bg-fixed relative">
+				<div class="" id="myDiv2">
+					<div class="bg-gradient-to-b to-blueviolet-500 from-orchid-500 opacity-50 absolute inset-0">
+					</div>
+					<div class="relative z-10 2xl:py-24 xl:py-16  lg:py-12  py-10 text-center px-5 xl:px-2 2xl:px-0 ">
+						<h2
+							class="text-white 2xl:text-5xl lg:text-4xl  text-3xl font-black leading-tight uppercase lg:pb-10 pb-5">
+							Our Partners</h2>
+						<div
+							class="sm:grid sm:grid-cols-2 sm:gap-12 flex flex-col space-y-12 sm:space-y-0 max-w-screen-xl mx-auto mt-5">
+							<div class="bg-blueviolet-500 bg-opacity-60 px-6 pb-8 text-white">
+								<img src="dist/images/LOGO-4.jpg" alt="" class="mx-auto">
+								<p class="mt-7 text-lg leading-relaxed">Working closely with Salamantex as a key
+									corporate
+									partner, the Charry Network will be able to leverage the Point of Sale (POS)
+									infrastructure which is being rolled out across key jurisdictions and markets around
+									the
+									world.</p>
+								<a href="javascript:void(0);"
+									class="hover:bg-blueviolet-400 rounded-full bg-blueviolet-500 inline-block mt-5 px-10 py-5 text-white font-bold">KNOW
+									MORE</a>
+							</div>
+							<div class="bg-blueviolet-500 bg-opacity-60 px-6 pb-8 text-white">
+								<img src="dist/images/soccercoin.jpg" alt="" class="mx-auto">
+								<p class="mt-7 text-lg leading-relaxed">Soccer Coin connects fans with each other and
+									the
+									clubs they support and love. Charry Network forms the technological basis for Soccer
+									Coin, provide the infrastructure and functionality, adding a further element of
+									traction
+									to the overall network.</p>
+								<a href="javascript:void(0);"
+									class="hover:bg-blueviolet-400 rounded-full bg-blueviolet-500 inline-block mt-5 px-10 py-5 text-white  font-bold">KNOW
+									MORE</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="bg-black px-10 py-8">
+			<p class="text-gray-500 text-sm sm:text-base py-3 xl:py-10">Copyright ©2021 Berrynomics Ltd, Malta. All
+				Rights
+				Reserved.</p>
+		</footer>
+
+	</div>
+
+
+	<script src="lib/jquery-1.10.2.min.js"></script>
+	<script src="numscroller-1.0.js"></script>
+	<script src="lib/prism.js"></script>
+
+
+
+</body>
+
+</html>
