@@ -91,7 +91,7 @@
 
         <!-- Component Code -->
 
-        <form class="pt-24" id="foo">
+        <form class="pt-24" id="foo" method="post" autocomplete="off" name="google-sheet">
             <div class="w-full md:w-1/2 lg:pl-80 px-5 lg:pr-0">
                 <div class="text-justify">
                     <h1 class="text-3xl font-bold pb-5 lg:pb-0">Leave us your info</h1>
@@ -127,6 +127,17 @@
                     Now</button>
             </div>
         </form>
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbww3AoHaGAOePLJeJbzgzgZZuOdXy1ElL2wm3s8pRJtQ1oNIUzH8BkSJuZc-DvOCxdTMw/exec'
+            const form = document.forms['google-sheet']
+
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thank you for contacting us! Our team will contact you soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
 
 
         <footer class="bg-black px-5">
